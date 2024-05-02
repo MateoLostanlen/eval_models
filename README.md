@@ -64,9 +64,8 @@ After running predictions, evaluate the results using the Jupyter notebook provi
 jupyter notebook compute_scores.ipynb
 ```
 
-### Support
-For any issues or questions, please submit an issue in this repository or contact the repository administrators.
-
----
-
-This README provides a concise guide on setting up and using your evaluation models repository. Adjust paths and commands as necessary based on your specific repository structure and requirements.
+#### Step 6: View erros using fiftyone
+You can have a look to predictions erros using fiftyone running:
+```bash
+python fiftyone_create.py
+```

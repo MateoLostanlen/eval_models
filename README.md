@@ -1,7 +1,3 @@
-Here's a README for your evaluation models repository designed to guide users on how to use it effectively:
-
----
-
 ## Evaluation Models Repository for YOLOv8
 
 ### Overview

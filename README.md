@@ -12,8 +12,8 @@ This repository is set up for evaluating YOLOv8 models on a specific dataset. It
 #### Step 1: Clone the Repository
 Begin by cloning this repository to your local machine. Use the command:
 ```bash
-git clone [URL to this repo]
-cd [repo-name]
+git clone https://github.com/MateoLostanlen/eval_models.git
+cd eval_models
 ```
 
 #### Step 2: Install dependencies

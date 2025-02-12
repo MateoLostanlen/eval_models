@@ -54,10 +54,14 @@ def evaluate_predictions(pred_folder, gt_folder, conf_th=0.1, cat=None):
                 pred_box = xywh2xyxy(np.array([x, y, w, h]))
 
                 if gt_boxes:
-                    matches = [box_iou(pred_box, gt_box) > 0.1 for gt_box in gt_boxes]
-                    if any(matches):
+                    # Compute matches
+                    matches = np.array([box_iou(pred_box, gt_box) > 0.1 for gt_box in gt_boxes], dtype=bool)
+
+                    # Check if any match exists
+                    if matches.any():
                         nb_tp += 1
-                        gt_matches = gt_matches | matches
+                        matches = matches.reshape(gt_matches.shape)
+                        gt_matches = np.logical_or(gt_matches, matches)  # Logical OR operation
                     else:
                         nb_fp += 1
                 else:
@@ -113,7 +117,7 @@ def evaluate_multiple_pred_folders(pred_folders, gt_folder, conf_thres_range, ca
 
         # Use loc to append data to the DataFrame to avoid potential issues
         results_df.loc[len(results_df.index)] = [
-            pred_folder.split("/")[2],
+            pred_folder.split("/")[1],
             best_conf_thres,
             best_f1_score,
             best_precision,

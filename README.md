@@ -19,7 +19,7 @@ cd eval_models
 #### Step 2: Install dependencies
 
 ```bash
-pip install -e requirements.txt
+pip install -r requirements.txt
 ```
 
 #### Step 3: Download and Set Up Data

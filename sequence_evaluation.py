@@ -55,7 +55,8 @@ def run_engine_predictions(image_folder, outpath, dConfig, save_pred=True, resum
             with open(os.path.join(outpath, "config.json"), 'w') as fp:
                 json.dump(existing_config, fp)
 
-        # Csv file where detailed predictions are dumped
+        # Csv file where detailed predictions are dumpedù
+        os.makedirs(os.path.join(outpath, "results"), exist_ok=True)
         outCsv = os.path.join(outpath, f"results/results_{configId}.csv")
         
         # Previous predictions are loaded if they exist and if resume is set to True
@@ -104,7 +105,7 @@ def concat_preds(datapath):
 
     # Retrieve existing results
     predsId = [
-        file.split("_")[-1].split(".")[0]
+        file.split("_")[-1].split(".")[0] # retrieve Id such as results_i.csv gives i
         for file in os.listdir(os.path.join(datapath, "results"))
         if os.path.splitext(file)[-1] == ".csv"
     ]
@@ -219,7 +220,7 @@ if __name__ == "__main__":
         },
     }
 
-    run_engine_predictions(image_folder, datapath, config, savePred=True)
+    run_engine_predictions(image_folder, datapath, config, save_pred=True)
     concat_preds(datapath)
     compute_accuracy(datapath)
     
